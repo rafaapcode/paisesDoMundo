@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={nunito.className}>
-        <main className='bg-gray-100 h-min-screen flex flex-col items-center'>
+        <main className='h-min-screen flex flex-col items-center'>
           <nav className='w-full bg-white h-16 flex items-center justify-center'>
             <section className='container flex items-center gap-3'>
               <Link href={`/`}>

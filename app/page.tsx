@@ -19,7 +19,7 @@ export type Country = {
   region: string;
   subregion: string;
   population: any;
-  languages: any
+  languages?: any
 }
 
 async function getCountries(): Promise<Country[]> {
