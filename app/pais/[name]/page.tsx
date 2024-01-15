@@ -46,7 +46,7 @@ export default async function CountryPage({ params: { name } }: { params: { name
         <section className="flex flex-col container">
             <h1 className="text-5xl text-center font-bold text-gray-800 my-16">{country.translations.por.common}</h1>
             <Link href="/" className="flex items-center py-2"><Image src="/arrow-back.svg" alt="Icone de seta para voltar" width={24} height={24} /> Voltar</Link>
-            <article className="flex justify-between min-w-full p-10 bg-gray-100 rounded-xl">
+            <article className="flex flex-col md:flex-row justify-center md:justify-between min-w-full p-10 bg-gray-100 rounded-xl">
                 <section>
                     {country.capital && (<h2 className="text-xl text-gray-800 m-3"><b>Capital : </b> {country.capital}</h2>)}
                     <h2 className="text-xl text-gray-800 m-3"><b>Continente : </b> {country.region}{country.subregion && `- ${country.subregion}`}</h2>
@@ -60,13 +60,13 @@ export default async function CountryPage({ params: { name } }: { params: { name
                         </h2>
                     )}
                 </section>
-                <div className="relative h-auto w-96 shadow-md rounded-sm">
+                <div className="relative h-48 my-2 md:h-auto w-92 md:w-96 shadow-md rounded-sm md:order-last order-first">
                     <Image fill className="object-cover" src={country.flags.svg} alt={country.flags.alt} />
                 </div>
             </article>
             <section>
                 <h3 className="mt-12 text-2xl font-semibold text-gray-800">Países que fazem fronteira</h3>
-                <div className="mt-5 mb-5 grid grid-cols-5 gap-3 w-full">
+                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 w-full container gap-2 mt-5 mb-5">
                     {borderCountries?.length && (borderCountries.map((borderCountry: BorderCountry) => (
                         <CountryCard key={borderCountry.cca3} {...borderCountry} />
                     )))}

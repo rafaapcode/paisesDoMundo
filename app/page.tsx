@@ -32,7 +32,7 @@ async function getCountries(): Promise<Country[]> {
 export default async function Home() {
   const countries = await getCountries();
   return (
-    <section className="grid grid-cols-5 w-full container gap-2 mt-16">
+    <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 w-full container gap-2 mt-16">
       {countries.map((country) => (
         <Link href={`/pais/${country.name.common}`}>
           <article key={country.name.common} className="h-64 w-min-full p-2 bg-white border-2 rounded-xl hover:border-indigo-200 cursor-pointer transition-all hover:shadow-xl">
