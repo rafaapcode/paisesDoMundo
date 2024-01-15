@@ -22,17 +22,19 @@ async function getCountryBorder(name: string) {
     const response = await fetch(`https://restcountries.com/v3.1/all`);
     const countries = await response.json();
 
-    const country = countries.find((country: Country) => country.name.common === name)!;
-    return country.borders?.map((border: string) => {
-        const borderCountry: Country = countries.find((country: any) => country.cca3 === border)
-        return {
-            name: borderCountry.name.common,
-            ptName: borderCountry.translations.por.common,
-            flag: borderCountry.flags.svg,
-            flagAlt: borderCountry.flags.alt,
-            cca3: borderCountry.cca3
-        }
-    })
+    const country: Country = countries.find((country: Country) => country.name.common === name)!;
+    if (country.borders) {
+        return country.borders?.map((border: string) => {
+            const borderCountry: Country = countries.find((country: any) => country.cca3 === border)
+            return {
+                name: borderCountry.name.common,
+                ptName: borderCountry.translations.por.common,
+                flag: borderCountry.flags.svg,
+                flagAlt: borderCountry.flags.alt,
+                cca3: borderCountry.cca3
+            }
+        })
+    }
 }
 
 export default async function CountryPage({ params: { name } }: { params: { name: string } }) {
